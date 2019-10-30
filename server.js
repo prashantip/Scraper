@@ -28,8 +28,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrapethenews", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/scrapethenews", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapethenews";
 
+mongoose.connect(MONGODB_URI);
 /* Routes
 app.get("/", function(req, res) {
 	res.sendFile(path.join(__dirname + "./public/index.html"));
